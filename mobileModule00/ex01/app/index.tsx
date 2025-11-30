@@ -17,16 +17,23 @@ const styles = StyleSheet.create({
 })
 
 export default function Index() {
+  const [text, setText] = useState<string>("A simple text");
+
+  const handleOnToggle = (): void => {    
+      console.log("Button pressed");
+      
+      setText((prev) => 
+        prev === "A simple text" ? "Hello World!" : "A simple text"
+    );
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>A simple text</Text>
+      <Text style={styles.text}>{text}</Text>
       <View>
         <Button 
             title="Click me" 
-            onPress={() => {
-            console.log("Button pressed");
-          }}
+            onPress={handleOnToggle}
           />
       </View>
     </View>
